@@ -4,7 +4,7 @@ using System.Runtime.Serialization.Formatters.Binary;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class SettingsController : MonoBehaviour
+public class SaveManager : MonoBehaviour
 {
     public InputField nameInput;
     public Dropdown ageDropdown;
@@ -22,18 +22,31 @@ public class SettingsController : MonoBehaviour
             ageList.Add(i.ToString());
         ageDropdown.AddOptions(ageList);    
     }
-    
+
     public void OnSaveNewPlayer()
-    {   
-        SavePlayerData player = CreateGamePlayer();
-
+    {
+        // セーブデータ作成
+        SavePlayerData player = CreateSavePlayerData();
+        // バイナリ形式でシリアル化
         BinaryFormatter bf = new BinaryFormatter();
+        // 指定したパスにファイルを作成
         FileStream file = File.Create(SaveFilePath);
-        bf.Serialize(file, player);
-        file.Close();
-    } 
+        // Closeが確実に呼ばれるように例外処理を用いる
+        try
+        {
+            // 指定したオブジェクトを上で作成したストリームにシリアル化する
+            bf.Serialize(file, player);
+        }
+        finally
+        {
+            // ファイル操作には明示的な破棄が必要です。Closeを忘れないように。
+            if (file != null) 
+                file.Close();
+        }
+    }
 
-    private SavePlayerData CreateGamePlayer() 
+    // 入力された情報をもとにセーブデータを作成
+    private SavePlayerData CreateSavePlayerData() 
     {
         SavePlayerData player = new SavePlayerData();
         player.name = nameInput.text;

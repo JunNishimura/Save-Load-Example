@@ -131,7 +131,7 @@ GameObject:
   - component: {fileID: 350911739}
   - component: {fileID: 350911738}
   m_Layer: 0
-  m_Name: Game Controller
+  m_Name: Load Manager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -146,7 +146,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 350911737}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e29c5c07840a845128d8e7c7256291fd, type: 3}
+  m_Script: {fileID: 11500000, guid: 8d50dfb25907549c29091c8bbd5cae9e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   playerPrefab: {fileID: 7912636172437870201, guid: 74c83906cfce4409f9622f98acab2296,
