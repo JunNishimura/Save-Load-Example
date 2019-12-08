@@ -25,7 +25,7 @@ public class SettingsController : MonoBehaviour
     
     public void OnSaveNewPlayer()
     {   
-        SavePlayer player = CreateGamePlayer();
+        SavePlayerData player = CreateGamePlayer();
 
         BinaryFormatter bf = new BinaryFormatter();
         FileStream file = File.Create(SaveFilePath);
@@ -33,9 +33,9 @@ public class SettingsController : MonoBehaviour
         file.Close();
     } 
 
-    private SavePlayer CreateGamePlayer() 
+    private SavePlayerData CreateGamePlayer() 
     {
-        SavePlayer player = new SavePlayer();
+        SavePlayerData player = new SavePlayerData();
         player.name = nameInput.text;
         player.age = int.Parse(ageDropdown.options[ageDropdown.value].text);
         player.color = colorDropdown.options[colorDropdown.value].text;

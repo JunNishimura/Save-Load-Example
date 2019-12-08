@@ -1,5 +1,5 @@
 ﻿[System.Serializable]
-public class SavePlayer
+public class SavePlayerData
 {    
     public string name;   
     public int age;

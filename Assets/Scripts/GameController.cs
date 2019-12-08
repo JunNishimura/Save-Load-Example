@@ -21,7 +21,7 @@ public class GameController : MonoBehaviour
         {
             BinaryFormatter bf = new BinaryFormatter();
             FileStream file = File.Open(SaveFilePath, FileMode.Open);
-            SavePlayer player = (SavePlayer)bf.Deserialize(file);
+            SavePlayerData player = (SavePlayerData)bf.Deserialize(file);
             file.Close();
 
             var playerObject = Instantiate(playerPrefab) as GameObject;
